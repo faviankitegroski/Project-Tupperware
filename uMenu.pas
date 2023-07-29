@@ -120,92 +120,32 @@ end;
 
 
 procedure TfMenu.shape_aumentaTam(Shape : TShape);
+var
+  I : Integer;
 begin
-  if alteraShape then
-    Exit;
-    
-  alteraShape := True;
-
-  Shape.Brush.Color := $006F6F6F;
-  Shape.Pen.Style   := psSolid;
-  Shape.Pen.Color   := $00454545;
-  Shape.Pen.Width   := 2;
-
-  TThread.CreateAnonymousThread(
-  procedure
-  var
-    I : Integer;
+  Shape.Brush.Color   := $006F6F6F;
+  Shape.Pen.Style     := psSolid;
+  Shape.Pen.Width	    := 2;
+  
+  for I := 44 to 187 do
   begin
-    
-    TThread.Synchronize(nil,
-    Procedure
-    begin
-      var I: Integer;
-      for I := 44 to 187 do 
-      begin
-        Shape.Width := I;
-      end;
-      
-      alteraShape := False;
-    end);
-
-  end).Start;
-
-end;
+    Shape.Width := I;
+  end;
+end;  
 
 
 procedure TfMenu.shape_diminuiTam(Shape : TShape);
+var
+  I : Integer;
 begin
-  if alteraShape then
-    Exit;
-
-  alteraShape := True;
-
   Shape.Brush.Color   := $00D9D9D9;
   Shape.Pen.Style     := psClear;
 
-  TThread.CreateAnonymousThread(
-  procedure
-  var
-    I : Integer;
-  begin
-
-    TThread.Synchronize(nil,
-    Procedure
-    begin
-      var I: Integer;
-      for I := 187 downto 44 do
-      begin
-        Shape.Width := I;
-      end;
-      alteraShape := False;
-    end);
-
-  end).Start;
-
-end;
-
-
-{procedure shape_diminuiTam(Shape : TShape);
-var
-  I, x : Integer;
-begin
-  x := 0;
-
   for I := 187 downto 44 do
   begin
-    if x = 0 then
-    begin
-      Shape.Brush.Color   := $00D9D9D9;
-      Shape.Pen.Style     := psClear;
-      x := 1;
-
-    end;
-
-    Sleep(300);
     Shape.Width := I;
   end;
-end;  }
+end;  
 
 
 
