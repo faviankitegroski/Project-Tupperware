@@ -15,14 +15,7 @@ type
     Shape4: TShape;
     Shape5: TShape;
     Shape6: TShape;
-    Image3: TImage;
-    Image4: TImage;
-    Image5: TImage;
-    Image6: TImage;
     Shape7: TShape;
-    Image7: TImage;
-    Image2: TImage;
-    Image9: TImage;
     animEnviar: TSkAnimatedImage;
     animCaminhao: TSkAnimatedImage;
     animCasa: TSkAnimatedImage;
