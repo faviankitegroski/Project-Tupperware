@@ -5,13 +5,12 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Vcl.Buttons;
+  Vcl.Buttons, Skia, Skia.Vcl;
 
 type
   TfMenu = class(TForm)
     Shape2: TShape;
     Shape1: TShape;
-    Image1: TImage;
     Shape3: TShape;
     Shape4: TShape;
     Shape5: TShape;
@@ -23,12 +22,11 @@ type
     Shape7: TShape;
     Image7: TImage;
     Image2: TImage;
-    Image8: TImage;
     Image9: TImage;
-    Image10: TImage;
-    Image12: TImage;
-    Image13: TImage;
-    Image11: TImage;
+    animEnviar: TSkAnimatedImage;
+    animCaminhao: TSkAnimatedImage;
+    animCasa: TSkAnimatedImage;
+    animCaixas: TSkAnimatedImage;
     procedure Shape2MouseLeave(Sender: TObject);
     procedure Shape2MouseEnter(Sender: TObject);
     procedure Shape3MouseEnter(Sender: TObject);
@@ -40,10 +38,19 @@ type
     procedure Shape5MouseLeave(Sender: TObject);
     procedure Shape6MouseLeave(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure animEnviarMouseEnter(Sender: TObject);
+    procedure animCaminhaoMouseEnter(Sender: TObject);
+    procedure animCasaMouseEnter(Sender: TObject);
+    procedure animCaixasMouseEnter(Sender: TObject);
+    procedure animCasaMouseLeave(Sender: TObject);
+    procedure animCaixasMouseLeave(Sender: TObject);
+    procedure animCaminhaoMouseLeave(Sender: TObject);
+    procedure animEnviarMouseLeave(Sender: TObject);
   private
     alteraShape: Boolean;
     procedure shape_diminuiTam(Shape : TShape);
     procedure shape_aumentaTam(Shape : TShape);
+    procedure habilitaAnim(TSkAni : TSkCustomAnimatedControl);
   public
     { Public declarations }
   end;
@@ -150,6 +157,56 @@ end;
 
 
 
+procedure TfMenu.animCasaMouseEnter(Sender: TObject);
+begin
+  habilitaAnim(animCasa);
+end;
 
+procedure TfMenu.animCaixasMouseEnter(Sender: TObject);
+begin
+  habilitaAnim(animCaixas);
+end;
+
+procedure TfMenu.animCaminhaoMouseEnter(Sender: TObject);
+begin
+  habilitaAnim(animCaminhao);
+end;
+
+procedure TfMenu.animEnviarMouseEnter(Sender: TObject);
+begin
+  habilitaAnim(animEnviar);
+end;
+
+
+procedure TfMenu.animCasaMouseLeave(Sender: TObject);
+begin
+  habilitaAnim(animCasa);
+end;
+
+procedure TfMenu.animCaixasMouseLeave(Sender: TObject);
+begin
+  habilitaAnim(animCaixas);
+end;
+
+procedure TfMenu.animCaminhaoMouseLeave(Sender: TObject);
+begin
+  habilitaAnim(animCaminhao);
+end;
+
+procedure TfMenu.animEnviarMouseLeave(Sender: TObject);
+begin
+  habilitaAnim(animEnviar);
+end;
+
+
+
+
+procedure TfMenu.habilitaAnim(TSkAni : TSkCustomAnimatedControl);
+begin
+  if not TSkAnimatedImage(TSkAni).Animation.Enabled = true then
+    TSkAnimatedImage(TSkAni).Animation.Enabled := True
+  else
+    TSkAnimatedImage(TSkAni).Animation.Enabled := False;
+end;
 
 end.
