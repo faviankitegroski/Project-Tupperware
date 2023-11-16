@@ -104,6 +104,10 @@
             <Form>fMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uErroData.pas">
+            <Form>fErroData</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

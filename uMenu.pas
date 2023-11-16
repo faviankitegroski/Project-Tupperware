@@ -39,6 +39,7 @@ type
     procedure animCaixasMouseLeave(Sender: TObject);
     procedure animCaminhaoMouseLeave(Sender: TObject);
     procedure animEnviarMouseLeave(Sender: TObject);
+    procedure animEnviarClick(Sender: TObject);
   private
     alteraShape: Boolean;
     procedure shape_diminuiTam(Shape : TShape);
@@ -52,6 +53,8 @@ var
   fMenu: TfMenu;
 
 implementation
+
+uses uErroData;
 
 {$R *.dfm}
 
@@ -201,5 +204,19 @@ begin
   else
     TSkAnimatedImage(TSkAni).Animation.Enabled := False;
 end;
+
+
+
+
+
+
+
+procedure TfMenu.animEnviarClick(Sender: TObject);
+begin
+  Application.CreateForm(TfErroData, fErroData);
+  fErroData.ShowModal;
+end;
+
+
 
 end.

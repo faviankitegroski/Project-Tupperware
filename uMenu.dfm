@@ -104,6 +104,7 @@ object fMenu: TfMenu
     Top = 289
     Width = 35
     Height = 35
+    OnClick = animEnviarClick
     OnMouseEnter = animEnviarMouseEnter
     OnMouseLeave = animEnviarMouseLeave
     Animation.Enabled = False
